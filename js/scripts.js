@@ -1,35 +1,44 @@
 let choices = ["rock", "paper", "scissors"];
 let playerSelection = "";
 let computerSelection = "";
+let playerScore = 0;
+let computerScore = 0;
 
-function computerPlay(){
+let buttons = Array.from(document.querySelectorAll(".selection"));
+buttons.forEach(button => button.addEventListener("click", playRound));
+
+let playerScoreDiv = document.querySelector("#player-score");
+let computerScoreDiv = document.querySelector("#computer-score");
+let result = document.querySelector("#round-result");
+
+function computerPlay() {
     return choices[Math.floor(Math.random() * 3)];
 }
 
-function playRound(playerSelection, computerSelection){
-    if(playerSelection == computerSelection){
-        return "IT'S A DRAW";
+function playRound(e) {
+    playerSelection = e.target.value;
+    computerSelection = computerPlay();
+
+    if (playerSelection == computerSelection) {
+        result.textContent = "It's a draw!";
+        return;
     }
-    if(playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" && computerSelection == "rock" || playerSelection == "scissors" || computerSelection == "paper"){
-        return "THE PLAYER WON!";
+    if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" && computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper") {
+        result.textContent = "The player won!";
+        playerScore++;
+        playerScoreDiv.textContent = playerScore;
+        if(playerScore == 5){
+            result.textContent = "GAME OVER! The player won!"
+        }
+        return;
     }
-    else{
-        return "THE COMPUTER WON!";
+    else {
+        result.textContent = "The computer won!";
+        computerScore++;
+        computerScoreDiv.textContent = computerScore;
+        if(computerScore == 5){
+            result.textContent = "GAME OVER! The computer won!"
+        }
+        return;
     }
 }
-
-function game(){
-    for(let i = 0; i < 5; i++){
-        playerSelection = prompt("Enter your selection(rock, paper, scissors): ").toLowerCase();
-        computerSelection = computerPlay();
-        if(choices.indexOf(playerSelection) != -1){
-            console.log(playRound(playerSelection, computerSelection) + ` Player selected ${playerSelection} and the computer selected ${computerSelection}`);
-        }
-        else{
-            console.log("Invalid input please enter either rock, paper or scissors");
-            i = i - 1;
-        }
-    }
-}
-
-game();
