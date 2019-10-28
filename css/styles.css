@@ -3,3 +3,39 @@
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+#selection-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
+    height: 300px;
+    margin: 10px auto;
+    border: 1px solid blue;
+    text-align: center;
+}
+.selection{
+    height: 200px;
+    width: 200px;
+    font-size: 20pt;
+}
+
+#results-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
+    height: 150px;
+    margin: 10px auto;
+    border: 1px solid blue;
+    text-align: center;
+}
+#results-container > div{
+    height: 100px;
+    width: 200px;
+    font-size: 18pt;
+    line-height: 40px;
+    border: 1px solid blue;
+}
