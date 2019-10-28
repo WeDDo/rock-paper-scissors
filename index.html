@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
 
@@ -13,6 +14,21 @@
 </head>
 
 <body>
+  <div id="main">
+    <div id="selection-container">
+      <button class="selection" value="rock">Rock</button>
+      <button class="selection" value="paper">Paper</button>
+      <button class="selection" value="scissors">Scissors</button>
+    </div>
+  </div>
+
+  <div id="results-container">
+    <div>Player score: <div id="player-score">0</div></div>
+    <div id="round-result"></div>
+    <div>Computer score: <div id="computer-score">0</div></div>
+  </div>
+
   <script src="js/scripts.js"></script>
 </body>
+
 </html>
